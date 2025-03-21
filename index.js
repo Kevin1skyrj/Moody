@@ -1,7 +1,14 @@
 /* === Imports === */
-
+import { initializeApp } from "firebase/app";
 /* === Firebase Setup === */
-
+const firebaseConfig = {
+    apiKey: "AIzaSyC0uSD-zf0DMFOgkbpypwLWO4WinkAr120",
+    authDomain: "moody-6195a.firebaseapp.com",
+    projectId: "moody-6195a",
+    storageBucket: "moody-6195a.firebasestorage.app",
+    
+  };
+  const app = initializeApp(firebaseConfig);
 /* === UI === */
 
 /* == UI - Elements == */
