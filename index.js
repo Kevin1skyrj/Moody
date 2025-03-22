@@ -1,5 +1,6 @@
 /* === Imports === */
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "./node_modules/firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 /* === Firebase Setup === */
 const firebaseConfig = {
     apiKey: "AIzaSyC0uSD-zf0DMFOgkbpypwLWO4WinkAr120",
@@ -9,6 +10,8 @@ const firebaseConfig = {
     
   };
   const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  
 /* === UI === */
 
 /* == UI - Elements == */
@@ -50,6 +53,22 @@ function authSignInWithEmail() {
 function authCreateAccountWithEmail() {
     console.log("Sign up with email and password")
 }
+
+const email = emailInputEl.value
+const password = passwordInputEl.value
+
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+
 
 /* == Functions - UI Functions == */
 
