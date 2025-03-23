@@ -1,5 +1,5 @@
 /* === Imports === */
-import { initializeApp } from "./node_modules/firebase/app";
+import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 /* === Firebase Setup === */
 const firebaseConfig = {
@@ -51,23 +51,19 @@ function authSignInWithEmail() {
 }
 
 function authCreateAccountWithEmail() {
-    console.log("Sign up with email and password")
+  const email = emailInputEl.value
+  const password = passwordInputEl.value
+  
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      showLoggedInView()
+    })
+    .catch((error) => {
+      console.error(error.message)
+    });
+  
 }
 
-const email = emailInputEl.value
-const password = passwordInputEl.value
-
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
 
 
 /* == Functions - UI Functions == */

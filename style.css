@@ -165,7 +165,7 @@ button:hover {
 /* === IDs === */
 
 #logged-out-view {
-    display: none;
+    display: block;
 }
 
 #logged-in-view {
